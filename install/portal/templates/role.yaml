@@ -1,0 +1,14 @@
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: portal-read
+  labels:
+    app: portal-rbac
+rules:
+  - apiGroups: [""]
+    resources: ["services"]
+    verbs: ["get", "list","watch"]
+  - apiGroups: [""]
+    resources: ["configmaps"]
+    verbs: ["get", "list","watch"]
+

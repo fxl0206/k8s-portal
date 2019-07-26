@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "portal.fullname" . }}
+  namespace: {{ .Values.setting.namespace }}
+  labels:
+    app.kubernetes.io/name: {{ include "portal.name" . }}
+    helm.sh/chart: {{ include "portal.chart" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: http
+      protocol: TCP
+      name: http
+      nodePort: {{ .Values.service.nodePort }}
+  selector:
+    app.kubernetes.io/name: {{ include "portal.name" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}

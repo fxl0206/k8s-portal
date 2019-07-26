@@ -1,0 +1,9 @@
+.. documentation master file, created by
+   sphinx-quickstart on Tue Dec 26 21:13:42 2017.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+环境
+===================================
+* Jenkins `地址 <http://47.96.161.126/proxy?target=http://192.168.1.6:6060/jenkins/>`_
+

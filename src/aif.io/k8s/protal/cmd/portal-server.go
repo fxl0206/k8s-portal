@@ -13,6 +13,7 @@ import (
 	"log"
 	"net/http"
 	"sort"
+        "os"
 	"time"
 )
 var(
@@ -24,8 +25,14 @@ func init(){
 func main(){
  fmt.Println("ok")
  store:= Start("","")
- http.Handle("/html/",http.StripPrefix("/html/",http.FileServer(http.Dir("html"))))
- http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request){
+ rootHome:="html"
+ if os.Args[0] != "" {
+  rootHome=os.Args[0]  
+}
+ http.HandleFunc("/beat",func(w http.ResponseWriter, r *http.Request){
+             fmt.Fprintln(w, "ok")
+ })
+ http.HandleFunc("/portal", func(w http.ResponseWriter, r *http.Request){
 	 services:=store.List()
 	 serverInfos:=[]server.ServiceInfo{}
 	 for _,v:=range services{
@@ -56,7 +63,8 @@ func main(){
 		 t.ExecuteTemplate(w, "layout", serverInfos)
 	 }
  })
- http.ListenAndServe("127.0.0.1:8000", nil)
+ http.Handle("/www/",http.StripPrefix("/www/",http.FileServer(http.Dir(rootHome))))
+ http.ListenAndServe(":8000", nil)
  <-stop
 }
 
@@ -64,7 +72,7 @@ func Start(kubeconfig string,apiServerAddress string) cache.Store{
 	var config *rest.Config
 	var err error
 	fmt.Println(kubeconfig,"-----",apiServerAddress)
-	kubeconfig="config"
+	kubeconfig=""
 	if kubeconfig == "" {
 		log.Printf("using in-cluster configuration")
 		config, err = rest.InClusterConfig()
