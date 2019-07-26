@@ -1,0 +1,24 @@
+.. documentation master file, created by
+   sphinx-quickstart on Tue Dec 26 21:13:42 2017.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+二阶段环境
+===================================
+* iSee控制台 `地址 <http://{{serverIp}}:6060/isee/index.html>`_
+
+* iSee规范控制台 `地址 <http://{{serverIp}}:6060/iseenew/index.html>`_
+
+* iSee原型 `地址 <http://{{serverIp}}:6060/isee/index.html>`_
+
+* Head `地址 <http://{{serverIp}}:6060/head>`_
+
+* JstormUi `地址 <http://{{serverIp}}:6060/jstorm>`_
+
+
+模拟浙江环境
+===================================
+* iSee控制台 `地址 <http://{{serverIp}}:6060/isee-1.0.3/home.html>`_
+
+
+
